@@ -1,0 +1,4 @@
+flask
+numpy
+opencv-contrib-python-headless
+torchvision == 0.8.2

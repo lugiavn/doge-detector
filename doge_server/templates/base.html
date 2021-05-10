@@ -1,0 +1,48 @@
+<!doctype html>
+<head>
+  <title>Doge Detector</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+</script>
+
+
+</head>
+<body>
+
+<h1 style="background-color: yellow"> Doge Detector</h1>
+
+<div>{{ message }}</div>
+
+<div id="image" style="position: relative;">
+<img src="{{ image_url }}" />
+  
+  {% for d in detections: %}
+	<div style="position: absolute;
+	            top: {{ d['y1'] }}px; left: {{ d['x1'] }}px;
+				width: {{ d['x2'] - d['x1'] }}px;
+				height: {{ d['y2'] - d['y1'] }}px;
+				border-style: solid;
+				border-color: {{ 'green' if d['score'] > 0.8 else 'yellow' }};
+				border-width: 5px;"></div>
+	<div style="position: absolute; top: {{ d['y1'] }}px; left: {{ d['x2'] + 10 }}px; background: rgba(1, 1, 1, .8)">
+	{% if d['score'] > 0.8 %}
+	  <font style="font-size:30px" color=green>Doge</font>
+	{% else %}
+	  <font style="font-size:30px" color=yellow>NotDoge</font>
+	{% endif %}
+	</div>
+  {% endfor %}
+</div>
+<hr>
+<form action="process_image" method="post" enctype="multipart/form-data">
+
+  <label for="fileToUpload">Choose images to upload (PNG, JPG)</label>
+  <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpg, .jpeg, .png"> <br> <br>
+  <input type="submit" value="Submit" name="submit">
+</form>
+
+<h3 style="background-color: yellow"> nam </h3>
+
+
+</body>
