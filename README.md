@@ -3,6 +3,8 @@
 
 ![https://dogecoin.org/static/11cf6c18151cbb22c6a25d704ae7b313/dd8fa/doge-main.jpg](https://dogecoin.org/static/11cf6c18151cbb22c6a25d704ae7b313/dd8fa/doge-main.jpg)
 
+Train the best doge detector!
+
 
 ```
 @misc{vo2021dogealpha1,
@@ -13,5 +15,4 @@
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/lugiavn/doge-detector}},
 }
-
 ```
