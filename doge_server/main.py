@@ -1,5 +1,5 @@
 # Run web server:
-# python3 -m flask run --host=0.0.0.0 --port=5000
+# FLASK_APP=main.py python3 -m flask run --host=0.0.0.0 --port=80
 
 import flask
 import numpy as np
@@ -63,7 +63,7 @@ def index():
 @app.route("/process_image", methods=['GET', 'POST'])
 def process_image():
     result = {'message': ''}
-    
+
     # try to parse as image and run model.
     detections = None
     if 'fileToUpload' not in flask.request.files:
@@ -80,11 +80,11 @@ def process_image():
 
     # parse result.
     if detections is not None:
-      
+
       result['image_url'] = 'tmp/' + x.filename
       with open(result['image_url'], 'wb') as f:
         f.write(imgbuffer)
-      
+
       result['message'] = 'No doge very sad'
       result['detections'] = []
       for box, score, label in zip(detections['boxes'],
@@ -100,7 +100,7 @@ def process_image():
                 'y2': y2,
                 'score': float(score)
             })
-            
+
             if score > 0.8:
                 result['message'] = 'very doge, wow amazing'
 
@@ -116,5 +116,3 @@ def process_image():
 def custom_static(filename):
     return flask.send_from_directory(
        'tmp', filename)
-
-
